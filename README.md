@@ -6,10 +6,6 @@ Claude と GitHub MCP の連携を試すための実験リポジトリです。
 
 このリポジトリは、Claude Desktop から GitHub を直接操作する MCP (Model Context Protocol) の動作確認や、各種スクリプト・コードのお試し実装に使用します。
 
-## 使い方
-
-自由に使ってください。壊しても大丈夫です。
-
 ## 環境
 
 - Claude Desktop
