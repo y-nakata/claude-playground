@@ -117,23 +117,39 @@ stateDiagram-v2
     classDef warning fill:#F5A623,color:#fff,font-weight:bold
     classDef danger fill:#D0021B,color:#fff,font-weight:bold
 
-    [*] --> 注文受付
-    注文受付 --> 支払い待ち : 注文確定
-    支払い待ち --> 準備中 : 支払い完了
-    支払い待ち --> キャンセル済み : 期限切れ
-    準備中 --> 発送済み : 発送処理
-    準備中 --> キャンセル済み : キャンセル申請
-    発送済み --> 配達完了 : 配達
-    配達完了 --> 返品受付 : 返品申請
-    返品受付 --> 返金済み : 返金処理
-    配達完了 --> [*]
-    キャンセル済み --> [*]
-    返金済み --> [*]
+    %% 状態の定義（英数字ID = "日本語ラベル"）
+    state "注文受付" as ST_ACCEPT
+    state "支払い待ち" as ST_WAIT_PAY
+    state "準備中" as ST_PREPARE
+    state "キャンセル済み" as ST_CANCEL
+    state "発送済み" as ST_SHIPPED
+    state "配達完了" as ST_DELIVERED
+    state "返品受付" as ST_RETURN_ACCEPT
+    state "返金済み" as ST_REFUNDED
 
-    class 注文受付,支払い待ち,準備中 active
-    class 発送済み,配達完了 success
-    class 返品受付,返金済み warning
-    class キャンセル済み danger
+    %% 遷移の定義（英数字IDで繋ぐ）
+    [*] --> ST_ACCEPT
+    ST_ACCEPT --> ST_WAIT_PAY : 注文確定
+    ST_WAIT_PAY --> ST_PREPARE : 支払い完了
+    ST_WAIT_PAY --> ST_CANCEL : 期限切れ
+    ST_PREPARE --> ST_SHIPPED : 発送処理
+    ST_PREPARE --> ST_CANCEL : キャンセル申請
+    ST_SHIPPED --> ST_DELIVERED : 配達
+    ST_DELIVERED --> ST_RETURN_ACCEPT : 返品申請
+    ST_RETURN_ACCEPT --> ST_REFUNDED : 返金処理
+    ST_DELIVERED --> [*]
+    ST_CANCEL --> [*]
+    ST_REFUNDED --> [*]
+
+    %% クラスの適用（英数字なので改行バグが起きない）
+    class ST_ACCEPT active
+    class ST_WAIT_PAY active
+    class ST_PREPARE active
+    class ST_SHIPPED success
+    class ST_DELIVERED success
+    class ST_RETURN_ACCEPT warning
+    class ST_REFUNDED warning
+    class ST_CANCEL danger
 ```
 
 ---
