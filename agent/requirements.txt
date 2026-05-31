@@ -1,2 +1,0 @@
--e ../aarm-sdk
-anthropic>=0.40.0
