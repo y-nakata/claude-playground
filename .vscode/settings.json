@@ -1,6 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./aarm/agent",
+        "./aarm",
         "./aarm/sdk/src"
     ]
 }
