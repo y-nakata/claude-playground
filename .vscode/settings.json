@@ -1,6 +1,6 @@
 {
     "python.analysis.extraPaths": [
         "./aarm",
-        "./aarm/sdk/src"
+        "./aarm/laarma_sdk/src"
     ]
 }
