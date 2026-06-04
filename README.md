@@ -15,6 +15,7 @@ claude-playground/
 
 - Claude Desktop
 - GitHub MCP Server (`@modelcontextprotocol/server-github`)
+- Visual Studio Code
 - GitHub Copilot
 - Google Gemini
 
