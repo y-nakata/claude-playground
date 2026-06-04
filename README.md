@@ -15,6 +15,8 @@ claude-playground/
 
 - Claude Desktop
 - GitHub MCP Server (`@modelcontextprotocol/server-github`)
+- GitHub Copilot
+- Google Gemini
 
 ## ライセンス
 
